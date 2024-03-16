@@ -93,3 +93,101 @@ function upgrade(cost, upgrade){
     </main>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cookie Game</title>
+    <link rel="shortcut icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6sz7idgjDddLnLFE43q4OPQGdO_AERzPT0g&usqp=CAU" type="image/x-icon">
+</head>
+
+<style>
+* {
+    margin: 0;
+    text-align: center;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+body {
+    padding: 20px;
+    background-color: wheat;
+}
+main {
+    padding: 5px;
+    background-color: #edcb8d;
+    border-radius: 5px;
+    box-shadow: 10px 10px 8px gray;
+    border: 2px solid black;
+}
+button {
+    background-color: #efc067;
+    transition: 750ms;
+    font-size: 15px;
+    border: 1px solid black;
+}
+button:hover {
+    background-color: #e8af45;
+    scale: 110%;
+}
+button:active {
+    background-color: #dc9d27;
+    scale: 120%;
+}
+span {
+    font-size: 15px;
+}
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 20px;
+}
+</style>
+
+<script>
+//Js
+let cookies = 0;
+let cps = 0;
+
+const update = () => {
+    document.getElementById('cookiesCounter').innerHTML = `${cookies} cookies`;
+    document.getElementById('cookiesCounterPS').innerHTML = `${cps} cps`;
+}
+
+function add(amount){
+    cookies += amount;
+    update()
+}
+
+setInterval(() => {
+    cookies += cps;
+    update()
+}, 1000)
+
+function upgrade(cost, upgrade){
+    if (cookies >= cost) {
+        cookies -= cost;
+        cps += upgrade;
+    } else {
+        alert('You can\'t afford that.');
+    }
+}
+
+</script>
+
+<body>
+    <main>
+    <h1>Cookie Game</h1>
+    <button onclick="add(1)">Click Me</button><br>
+    <span id="cookiesCounter">0 cookies</span><br>
+    <span id="cookiesCounterPS">0 cps</span><br>
+    <h2>Shop</h2>
+    <button onclick="upgrade(100, 1)">Mouse | Cost: 100 cookies, +1 cookies/sec</button><br>
+    <button onclick="upgrade(1000, 15)">Spacebar | Cost: 1,000 cookies, +15 cookies/sec</button><br>
+    <button onclick="upgrade(10000, 200)">JS Console | Cost: 10,000 cookies, +200 cookies/sec</button><br>
+    <button onclick="upgrade(100000, 2500)">Butterfly Click | Cost: 100,000 cookies, +2,500 cookies/sec</button><br>
+    <button onclick="upgrade(1000000, 30000)">Transend Reality | Cost: 1,000,000 cookies, +30,000 cookies/sec</button><br>
+    <button onclick="upgrade(10000000, 350000)">Futuristic Time Macine | Cost: 10,000,000 cookies, +350,000 cookies/sec</button><br>
+    <button onclick="upgrade(100000000, 4000000)">Every time anybody clicked <b>ever</b> | Cost: 100,000,000 cookies, +4,000,000 cookies/sec</button><br>
+    <button onclick="upgrade(1000000000, cookies * 2)">The Ultimate Upgrade | Cost: 1,000,000,000 cookies, Multiply cookies by 2</button><br>
+    </main>
+</body>
+</html>
